@@ -31,11 +31,12 @@ continue without asking the user to choose from a list.
 
 ## Browser contract
 
-Perform every VideoExpress action in the in-app browser and keep it visible in
-the side screen for the entire workflow. Never silently switch to an external or
-hidden browser. Reuse the signed-in VideoExpress session. If the in-app browser
-is unavailable or login requires user action, explain exactly what is needed and
-pause.
+Open and use the VideoExpress application only at
+`https://app.videoexpress.ai/`. Perform every VideoExpress action in the in-app
+browser and keep it visible in the side screen for the entire workflow. Never
+silently switch to an external or hidden browser. Reuse the signed-in
+VideoExpress application session. If the in-app browser is unavailable or login
+requires user action, explain exactly what is needed and pause.
 
 Give short progress updates while working. Do not describe internal browser
 automation technology.

@@ -17,7 +17,8 @@ places accepted clips on the timeline in script order, and saves the project.
    task or reusable agent configuration.
 3. Make sure the Codex account has the Browser capability and can display the
    in-app browser side screen.
-4. Sign in to VideoExpress.ai in that visible browser.
+4. Open and sign in at [https://app.videoexpress.ai/](https://app.videoexpress.ai/)
+   in that visible browser.
 5. Send a request in this form:
 
 ```text
