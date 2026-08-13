@@ -33,7 +33,7 @@ Codex should begin immediately when both values are present.
 - Six short Lipsync HD clips
 - Six visibly different human speakers
 - One continuous script relayed across all six speakers
-- Five organic, topic-motivated match-action transitions
+- Five lightweight transition ideas with automatic clean-cut fallback
 - Text to Video -> Advanced with Advanced Mode enabled
 - Automatic prompt enhancement disabled for every generation
 - Manual clip length set to approximately six seconds
@@ -42,6 +42,7 @@ Codex should begin immediately when both values are present.
 - Mandatory one-scene lip-sync calibration before batch generation
 - Private generation
 - Full audio and visual review before timeline placement
+- Transition mismatches never stop production or leave the timeline empty
 - Project saved but not exported unless the user asks
 
 ## Repository structure
