@@ -79,12 +79,14 @@ adult person. Vary age range, gender presentation, ethnicity, hair, clothing,
 and setting while keeping framing and production quality compatible across the
 six clips.
 
-Design five motivated match-action pairs before writing the prompts. Every
-action must be something the speaker would naturally do in that setting and
-must reinforce the topic. Prefer small everyday actions such as placing a phone
-face-down, opening a notebook, reaching for water, opening a blind, or sliding a
-breakfast plate onto a counter. The next scene begins with a different person
-continuing the same action, direction, object position, and camera framing.
+Design five lightweight transition ideas before writing the prompts. Treat them
+as creative preferences, never hard acceptance gates. Every action must be
+something the speaker would naturally do in that setting and must reinforce the
+topic. Prefer small everyday actions such as setting down a cup, resting a hand
+on a notebook, or glancing toward a nearby object. Avoid actions whose success
+depends on exact prop orientation, exact hand choreography, or pixel-perfect
+continuity. When a natural match action is unreliable, use compatible framing
+and an ordinary editorial cut between the two speakers.
 
 Never use an object merely to hide the cut. Do not cover the lens, wipe a hand
 across the camera, push into a screen, begin or end in artificial darkness, or
@@ -122,11 +124,10 @@ Prompt rules:
 - Use a front-facing or slight three-quarter face angle, never a profile.
 - Keep transition objects below shoulder height and away from the mouth.
 - Use only one small match action per cut. Do not ask for large body actions.
-- Match the action phase across the cut, not a covered frame. For example, one
-  person finishes turning a phone face-down and the next person begins as a
-  similar phone completes the same downward turn.
-- Match object color, screen position, hand direction, shot size, eye line, and
-  lighting direction while allowing the people and locations to change.
+- Match general movement and composition when practical; exact prop position,
+  orientation, color, or hand direction is optional.
+- Never make the success of a scene depend on a generated prop behaving in one
+  exact way. A clean cut between compatible medium shots is always acceptable.
 - Use a locked or gently handheld medium shot. Do not use zooms, whip pans,
   crash moves, lens occlusions, or artificial black frames.
 - If an action would look strange without the transition, replace it.
@@ -186,7 +187,10 @@ Open `Media Library -> My AI Videos`. Identify results using the frozen scene
 ledger, prompt fragment, thumbnail, creation time, and stable media ID. Do not
 assume newest-first display order equals script order.
 
-Play every generated clip in full with sound. Accept a scene only when:
+Play every generated clip in full with sound. Separate essential dialogue
+quality from optional transition polish.
+
+A scene passes the essential gate when:
 
 - exactly one intended person appears
 - the face and mouth remain clearly visible
@@ -195,11 +199,13 @@ Play every generated clip in full with sound. Accept a scene only when:
 - no unwanted writing appears in the image
 - framing and aspect ratio are correct
 - the clip contains no extra spoken line
-- the entry action naturally continues the previous scene's exit action
-- the transition action is motivated by the topic and does not interrupt speech
-- the cut matches object position, direction, scale, and action phase
-- neither side of the cut contains lens covering, an artificial blackout, a
-  forced camera move, or a gesture performed only for the transition
+
+Transition actions are a soft preference. A mismatch in prop position,
+direction, scale, timing, or action phase must never reject an otherwise usable
+scene and must never stop production. Prefer the best natural-looking attempt,
+then join it with a clean editorial cut. Reject only a transition artifact that
+materially obscures the speaker, interrupts the dialogue, introduces an
+artificial blackout, or makes the clip unusable on its own.
 
 If unwanted writing appears, use the current `Fix Video` repair option for that
 generated item and review the repaired result. Do not add repair wording to a
@@ -212,8 +218,21 @@ speaker pose, framing, mouth visibility, or explicit on-camera-dialogue wording,
 then review the replacement in full.
 Rejected and draft clips must never be placed on the timeline.
 
-Retry a failed scene at most twice. If it still fails, stop and report the exact
-scene and failure instead of pretending it passed.
+Use this recovery ladder without asking the user:
+
+1. For a transition-only mismatch, do not regenerate. Keep the scene and use a
+   normal cut.
+2. For an essential dialogue or visual failure, regenerate the scene once with
+   the same words and a simpler speaker action.
+3. If it still fails, regenerate with a locked medium close-up, no prop action,
+   and only the direct on-camera dialogue instructions.
+4. Continue generating and reviewing the other scenes while a replacement is
+   pending. Never leave the entire timeline empty because one scene failed.
+5. Repeat the simplified essential-quality attempt when a generation completes
+   but is unusable. Stop only for a genuine external blocker such as exhausted
+   credits, unavailable generation service, authentication loss, or repeated
+   job errors that produce no reviewable video. Aesthetic transition mismatch
+   is never an external blocker.
 
 ## Gate 5 - Assemble by media ID
 
@@ -229,11 +248,10 @@ After all six scenes pass review:
 7. Remove any duplicate or rejected timeline block and recheck the count.
 8. Play the complete timeline with sound and confirm each speaker starts exactly
    where the previous speaker stopped.
-9. Review every cut frame-by-frame. Accept it only when object position,
-   direction, scale, and action phase make an ordinary, motivated match action.
-   Reject lens occlusion, wipes, crash zooms, artificial black frames, or any
-   gesture that looks staged for the cut. Regenerate the weaker side when a pair
-   does not match naturally.
+9. Review every cut. Keep a natural match action when it works. If object
+   position, direction, scale, or timing does not match, retain the usable clips
+   and use the ordinary direct cut already created by timeline adjacency. Only
+   regenerate when the clip itself fails the essential gate.
 10. Save the project as `[TOPIC] - Organic Match Action Relay - [ASPECT RATIO]`.
 
 Do not export unless the user explicitly asked for an exported file.
@@ -243,6 +261,11 @@ Do not export unless the user explicitly asked for an exported file.
 Do not say the task is complete until all six accepted clips have been watched,
 the timeline contains exactly six unique media IDs in scene order, the complete
 relay has been played, and the project has been saved.
+
+Completion of the six-scene video has priority over cinematic transition
+perfection. Never return a transition-failure report like `SC-03 could not match
+SC-04` when both clips contain usable synchronized dialogue; assemble them with
+a clean cut and finish the project.
 
 The final response must state:
 
