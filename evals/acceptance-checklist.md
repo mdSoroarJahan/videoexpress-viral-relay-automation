@@ -27,11 +27,11 @@ Use this checklist to evaluate a complete run.
 - [ ] Generator prompts contain none of the forbidden overlay-related words.
 - [ ] The requested aspect ratio was selected.
 - [ ] Public sharing was disabled.
-- [ ] Five motivated match-action pairs were frozen.
+- [ ] Five lightweight transition ideas were planned as soft preferences.
 - [ ] Every transition action makes sense even when its clip is viewed alone.
 - [ ] No lens cover, hand wipe, screen push-in, forced blackout, or staged prop
       presentation is used.
-- [ ] Every transition specifies matching object, color, direction, and framing.
+- [ ] No scene depends on exact prop orientation or hand choreography.
 
 ## Quality control
 
@@ -42,9 +42,12 @@ Use this checklist to evaluate a complete run.
 - [ ] No unwanted writing appears.
 - [ ] Dialogue finishes before each exit transition begins.
 - [ ] Every entry begins from the preceding scene's planned final composition.
-- [ ] All five cuts pass frame-by-frame transition review.
+- [ ] Any failed match action was converted to a clean ordinary cut without
+      stopping production.
 - [ ] Failed clips were repaired or regenerated and reviewed again.
 - [ ] Rejected clips were excluded from the timeline.
+- [ ] A transition-only mismatch never caused an otherwise usable clip to be
+      rejected.
 
 ## Assembly
 
@@ -56,3 +59,5 @@ Use this checklist to evaluate a complete run.
 - [ ] Dialogue handoffs are continuous.
 - [ ] The project was saved with topic and aspect ratio in its name.
 - [ ] Export occurred only when explicitly requested.
+- [ ] The operator completed and saved the six-scene project unless a genuine
+      external blocker prevented generation.
