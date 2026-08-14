@@ -10,7 +10,8 @@ Use this checklist to evaluate a complete run.
 - [ ] It did not clear or overwrite a previously saved project.
 - [ ] The script has exactly six fragments.
 - [ ] Concatenating the fragments creates one continuous grammatical paragraph.
-- [ ] Each fragment fits clear natural delivery in approximately six seconds.
+- [ ] Each fragment has a recorded word count and calculated planning duration.
+- [ ] Every line can finish naturally without being rushed into six seconds.
 
 ## Prompts and settings
 
@@ -18,7 +19,10 @@ Use this checklist to evaluate a complete run.
 - [ ] Every speaker's face and mouth are unobstructed.
 - [ ] Every scene uses Text to Video -> Advanced with Advanced Mode enabled.
 - [ ] Automatic prompt enhancement was verified off before every submission.
-- [ ] Manual Video Length was enabled and set to 6 seconds for every scene.
+- [ ] Manual Video Length remained disabled on the first attempt so duration was
+      selected automatically from the dialogue and action.
+- [ ] A truncated scene was retried using only that scene's calculated manual
+      duration, increased by two seconds again if necessary.
 - [ ] The operator used only New -> Create with AI -> Text to Video -> Advanced.
 - [ ] No Support, Tutorials, My Videos, Public Gallery, or other unrelated menu
       item was opened during generation.
@@ -38,6 +42,7 @@ Use this checklist to evaluate a complete run.
 - [ ] Every clip was played in full with sound.
 - [ ] Every clip contains exactly one intended speaker.
 - [ ] Every speaker visibly speaks the full exact fragment.
+- [ ] The final spoken word finishes before the clip ends.
 - [ ] Lip movement is acceptably synchronized.
 - [ ] No unwanted writing appears.
 - [ ] Dialogue finishes before each exit transition begins.
