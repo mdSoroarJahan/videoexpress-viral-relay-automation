@@ -17,7 +17,7 @@ creative preferences. If one required value is missing, ask only for that value.
 Use these fixed defaults:
 
 - six clips
-- six Advanced clips, each manually set to approximately six seconds
+- six Advanced clips with dialogue-aware variable duration
 - one different human speaker per clip
 - one continuous spoken idea across all six clips
 - photorealistic creator-style footage
@@ -63,12 +63,22 @@ The relay must satisfy all of these rules:
 - Joining the six fragments produces one grammatical paragraph with no repeated,
   skipped, or paraphrased words.
 - Every fragment concerns the same topic.
-- Each fragment is short enough for clear natural delivery in roughly three to
-  six seconds, including a small transition action.
+- Each fragment must be spoken completely at a natural pace. Do not shorten or
+  rush a line merely to force it into six seconds.
+
+Calculate a planning duration for every fragment before generation:
+
+`planned seconds = max(6, ceil(spoken word count / 2.2) + 2)`
+
+The two-second allowance covers natural pauses, breathing, and a clean visual
+finish. Record the spoken word count and planned seconds in the scene ledger.
+Different scenes may have different durations. If the calculated duration is
+outside the range supported by the current VideoExpress control, rebalance the
+paragraph across the six fragments without changing its total wording or order.
 
 Freeze a scene ledger before generating anything:
 
-`scene | speaker description | setting | exact spoken fragment | entry match action | exit match action | status | media ID`
+`scene | speaker description | setting | exact spoken fragment | word count | planned seconds | entry match action | exit match action | status | media ID`
 
 Use `SC-01` through `SC-06`. Once frozen, do not rewrite accepted fragments.
 
@@ -106,8 +116,9 @@ spoken by Actor 1.
 `Video Prompt` pattern:
 
 ```text
-[ASPECT RATIO] photorealistic cinematic creator video, six seconds, one
-continuous naturalistic eye-level shot. Actor 1 is [DISTINCT APPEARANCE AND
+[ASPECT RATIO] photorealistic cinematic creator video, one continuous
+naturalistic eye-level shot with enough duration for the complete spoken line
+and a natural finish. Actor 1 is [DISTINCT APPEARANCE AND
 CLOTHING], alone in [SETTING]. [MOTIVATED ENTRY MATCH ACTION.] Actor 1 faces the
 camera with their full mouth clearly visible. This is direct, visible, on-camera
 dialogue spoken by Actor 1. Actor 1 looks into the lens and says exactly:
@@ -157,8 +168,9 @@ For every scene, use this exact route:
 5. Enable `Advanced Mode`.
 6. Disable `Automatically enhance my video prompt` and verify it remains
    unchecked immediately before every submission.
-7. Enable `Manual Video Length, sec` and set it to `6` immediately before every
-   submission.
+7. Leave `Manual Video Length, sec` disabled on the first attempt so
+   VideoExpress automatically chooses an appropriate duration from what the
+   actor is doing and saying. Never force every scene to six seconds.
 8. Keep public-gallery sharing disabled.
 9. Paste the complete Advanced prompt, including the exact quoted fragment,
    into `Video Prompt`.
@@ -175,6 +187,12 @@ visibly form changing speech shapes while the audible words are delivered. A
 voice over a neutral or merely blinking face is narration and fails. If `SC-01`
 fails, revise only mouth visibility, framing, or the explicit on-camera-dialogue
 wording and retry it. Never submit `SC-02` through `SC-06` before `SC-01` passes.
+
+Also verify that the complete quoted fragment finishes before the clip ends. If
+automatic duration cuts off a word or rushes the ending, regenerate only that
+scene with `Manual Video Length, sec` enabled and set to the scene's calculated
+`planned seconds`. If the complete line still does not finish, increase that
+scene by two seconds and retry. Do not change every other scene's duration.
 
 Never combine multiple scenes in one generation prompt. Submit scenes
 individually. VideoExpress may render up to five jobs concurrently; when the
@@ -195,6 +213,7 @@ A scene passes the essential gate when:
 - exactly one intended person appears
 - the face and mouth remain clearly visible
 - the person visibly speaks the complete exact fragment
+- the final spoken word finishes before the clip ends
 - mouth movement stays synchronized with the audible words
 - no unwanted writing appears in the image
 - framing and aspect ratio are correct
@@ -226,9 +245,11 @@ Use this recovery ladder without asking the user:
    the same words and a simpler speaker action.
 3. If it still fails, regenerate with a locked medium close-up, no prop action,
    and only the direct on-camera dialogue instructions.
-4. Continue generating and reviewing the other scenes while a replacement is
+4. If speech is truncated, keep the exact words and add two seconds to that
+   scene's manual duration before regenerating.
+5. Continue generating and reviewing the other scenes while a replacement is
    pending. Never leave the entire timeline empty because one scene failed.
-5. Repeat the simplified essential-quality attempt when a generation completes
+6. Repeat the simplified essential-quality attempt when a generation completes
    but is unusable. Stop only for a genuine external blocker such as exhausted
    credits, unavailable generation service, authentication loss, or repeated
    job errors that produce no reviewable video. Aesthetic transition mismatch
