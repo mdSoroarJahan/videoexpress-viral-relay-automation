@@ -36,14 +36,15 @@ Codex should begin immediately when both values are present.
 - Five lightweight transition ideas with automatic clean-cut fallback
 - Text to Video -> Advanced with Advanced Mode enabled
 - Automatic prompt enhancement disabled for every generation
-- Dialogue-aware variable clip duration; automatic duration first, calculated
-  manual fallback only when speech is truncated
+- Dialogue-aware manual duration calculated separately for every scene
+- Automatic silent-tail trimming when more than one second remains after speech
 - Direct path only: New -> Create with AI -> Text to Video -> Advanced
 - Visual action and exact quoted dialogue in each Video Prompt
 - Mandatory one-scene lip-sync calibration before batch generation
 - Private generation
 - Full audio and visual review before timeline placement
 - Transition mismatches never stop production or leave the timeline empty
+- A stuck Media Library preview falls back to timeline playback
 - Project saved but not exported unless the user asks
 
 ## Repository structure

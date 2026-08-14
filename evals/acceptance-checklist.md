@@ -19,10 +19,9 @@ Use this checklist to evaluate a complete run.
 - [ ] Every speaker's face and mouth are unobstructed.
 - [ ] Every scene uses Text to Video -> Advanced with Advanced Mode enabled.
 - [ ] Automatic prompt enhancement was verified off before every submission.
-- [ ] Manual Video Length remained disabled on the first attempt so duration was
-      selected automatically from the dialogue and action.
-- [ ] A truncated scene was retried using only that scene's calculated manual
-      duration, increased by two seconds again if necessary.
+- [ ] Manual Video Length was enabled and set separately from each scene's word
+      count using `max(5, ceil(words / 2.4) + 1)`.
+- [ ] A truncated scene was retried with only that scene increased by one second.
 - [ ] The operator used only New -> Create with AI -> Text to Video -> Advanced.
 - [ ] No Support, Tutorials, My Videos, Public Gallery, or other unrelated menu
       item was opened during generation.
@@ -43,6 +42,11 @@ Use this checklist to evaluate a complete run.
 - [ ] Every clip contains exactly one intended speaker.
 - [ ] Every speaker visibly speaks the full exact fragment.
 - [ ] The final spoken word finishes before the clip ends.
+- [ ] No accepted timeline clip contains more than approximately one second of
+      inactive silence after its final word.
+- [ ] Excess silence was trimmed to approximately 0.4-0.7 seconds after speech.
+- [ ] A stuck Media Library preview was retried through timeline playback rather
+      than stopping the entire workflow.
 - [ ] Lip movement is acceptably synchronized.
 - [ ] No unwanted writing appears.
 - [ ] Dialogue finishes before each exit transition begins.

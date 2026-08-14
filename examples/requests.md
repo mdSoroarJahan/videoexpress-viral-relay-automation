@@ -37,11 +37,11 @@ leave the timeline empty for a transition-only mismatch.
 
 ## Expected variable duration
 
-Codex does not force every clip to six seconds. It first leaves Manual Video
-Length disabled so VideoExpress can choose the duration from the dialogue. For
-planning and truncation recovery it calculates:
+Codex does not force every clip to six seconds. It calculates and sets a separate
+manual duration for each fragment:
 
-`max(6, ceil(spoken word count / 2.2) + 2)`
+`max(5, ceil(spoken word count / 2.4) + 1)`
 
-If a line is cut off, Codex regenerates only that scene at the calculated manual
-duration, adding another two seconds if the ending is still truncated.
+If a line is cut off, Codex adds one second only to that scene. If a ten-second
+clip finishes speaking early, Codex keeps the good dialogue and trims the silent
+tail on the timeline, leaving only 0.4-0.7 seconds after the final word.
