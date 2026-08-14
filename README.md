@@ -1,67 +1,32 @@
 # VideoExpress Viral Relay Automation
 
-A paste-ready Codex system prompt for producing a six-person relay video in
-VideoExpress.ai from only two user inputs:
+A short, paste-ready Codex system prompt that creates a complete six-person
+relay video from only:
 
 - a topic
 - an aspect ratio (`16:9` or `9:16`)
 
-This repository contains no website or interface. Codex controls the visible
-VideoExpress browser, generates six distinct human-speaker clips, reviews them,
-places accepted clips on the timeline in script order, and saves the project.
-
-## Use
-
-1. Open [`SYSTEM_PROMPT.md`](SYSTEM_PROMPT.md).
-2. Copy its complete contents into the system-instructions field of a new Codex
-   task or reusable agent configuration.
-3. Make sure the Codex account has the Browser capability and can display the
-   in-app browser side screen.
-4. Open and sign in at [https://app.videoexpress.ai/](https://app.videoexpress.ai/)
-   in that visible browser.
-5. Send a request in this form:
+Copy [`SYSTEM_PROMPT.md`](SYSTEM_PROMPT.md) into Codex, sign in at
+[https://app.videoexpress.ai/](https://app.videoexpress.ai/), then send:
 
 ```text
-Topic: Why eclipse shadows become crescents
-Aspect ratio: 16:9
+Topic: Three habits that improve morning focus
+Aspect ratio: 9:16
 ```
 
-Codex should begin immediately when both values are present.
+The automation directly generates six Advanced videos, uses 6 seconds normally
+or 8 seconds for longer dialogue, adds them to the timeline in scene order, and
+saves the project. It does not perform post-generation playback, quality review,
+repair, regeneration, trimming, or transition inspection.
 
-## Fixed production format
+## Fixed settings
 
-- Six short Lipsync HD clips
-- Six visibly different human speakers
-- One continuous script relayed across all six speakers
-- Five lightweight transition ideas with automatic clean-cut fallback
-- Text to Video -> Advanced with Advanced Mode enabled
-- Automatic prompt enhancement disabled for every generation
-- Manual 6-second duration for normal dialogue and 8 seconds for longer dialogue
-- No timeline cutting; clips with awkward pauses are regenerated
-- Direct path only: New -> Create with AI -> Text to Video -> Advanced
-- Visual action and exact quoted dialogue in each Video Prompt
-- Mandatory one-scene lip-sync calibration before batch generation
+- Visible in-app browser side screen
+- Text to Video -> Advanced
+- Advanced Mode enabled
+- Automatic prompt enhancement disabled
+- Requested aspect ratio selected for every scene
+- Six different human speakers
+- Exact continuous dialogue relay
 - Private generation
-- Full audio and visual review before timeline placement
-- Transition mismatches never stop production or leave the timeline empty
-- A stuck Media Library preview falls back to timeline playback
-- Project saved but not exported unless the user asks
-
-## Repository structure
-
-```text
-.
-|-- AGENTS.md
-|-- SYSTEM_PROMPT.md
-|-- examples/
-|   `-- requests.md
-`-- evals/
-    `-- acceptance-checklist.md
-```
-
-## Important quality decision
-
-Generator prompts deliberately avoid mentioning overlay-related negative terms.
-VideoExpress training demonstrates that explicitly asking the model to omit such
-elements can cause it to generate them. Cleanup requirements remain in the
-system workflow, outside the text sent to the video model.
+- No export unless requested
