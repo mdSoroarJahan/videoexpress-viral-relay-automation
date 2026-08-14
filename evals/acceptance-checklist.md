@@ -10,8 +10,8 @@ Use this checklist to evaluate a complete run.
 - [ ] It did not clear or overwrite a previously saved project.
 - [ ] The script has exactly six fragments.
 - [ ] Concatenating the fragments creates one continuous grammatical paragraph.
-- [ ] Each fragment has a recorded word count and calculated planning duration.
-- [ ] Every line can finish naturally without being rushed into six seconds.
+- [ ] Each fragment has a recorded word count and a 6- or 8-second duration.
+- [ ] Normal dialogue uses 6 seconds; longer dialogue uses 8 seconds.
 
 ## Prompts and settings
 
@@ -19,9 +19,9 @@ Use this checklist to evaluate a complete run.
 - [ ] Every speaker's face and mouth are unobstructed.
 - [ ] Every scene uses Text to Video -> Advanced with Advanced Mode enabled.
 - [ ] Automatic prompt enhancement was verified off before every submission.
-- [ ] Manual Video Length was enabled and set separately from each scene's word
-      count using `max(5, ceil(words / 2.4) + 1)`.
-- [ ] A truncated scene was retried with only that scene increased by one second.
+- [ ] Manual Video Length was enabled and set to 6 or 8 seconds for every scene.
+- [ ] A truncated 6-second scene was regenerated at 8 seconds.
+- [ ] No scene used a 10-second duration.
 - [ ] The operator used only New -> Create with AI -> Text to Video -> Advanced.
 - [ ] No Support, Tutorials, My Videos, Public Gallery, or other unrelated menu
       item was opened during generation.
@@ -42,9 +42,8 @@ Use this checklist to evaluate a complete run.
 - [ ] Every clip contains exactly one intended speaker.
 - [ ] Every speaker visibly speaks the full exact fragment.
 - [ ] The final spoken word finishes before the clip ends.
-- [ ] No accepted timeline clip contains more than approximately one second of
-      inactive silence after its final word.
-- [ ] Excess silence was trimmed to approximately 0.4-0.7 seconds after speech.
+- [ ] Every accepted clip begins speaking promptly and has no awkward silent tail.
+- [ ] A clip with excessive dead air was regenerated, never cut or trimmed.
 - [ ] A stuck Media Library preview was retried through timeline playback rather
       than stopping the entire workflow.
 - [ ] Lip movement is acceptably synchronized.
@@ -66,6 +65,7 @@ Use this checklist to evaluate a complete run.
 - [ ] There are no duplicated or rejected clips.
 - [ ] The full timeline was played with sound.
 - [ ] Dialogue handoffs are continuous.
+- [ ] No accepted timeline clip was trimmed, split, cropped, or shortened.
 - [ ] The project was saved with topic and aspect ratio in its name.
 - [ ] Export occurred only when explicitly requested.
 - [ ] The operator completed and saved the six-scene project unless a genuine

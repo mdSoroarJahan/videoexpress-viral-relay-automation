@@ -17,7 +17,7 @@ creative preferences. If one required value is missing, ask only for that value.
 Use these fixed defaults:
 
 - six clips
-- six Advanced clips with dialogue-aware variable duration
+- six Advanced clips using only 6-second or 8-second duration
 - one different human speaker per clip
 - one continuous spoken idea across all six clips
 - photorealistic creator-style footage
@@ -63,19 +63,18 @@ The relay must satisfy all of these rules:
 - Joining the six fragments produces one grammatical paragraph with no repeated,
   skipped, or paraphrased words.
 - Every fragment concerns the same topic.
-- Each fragment must be spoken completely at a natural pace. Do not shorten or
-  rush a line merely to force it into six seconds.
+- Each fragment must be spoken completely at a natural pace.
 
-Calculate a planning duration for every fragment before generation:
+Assign one of only two durations before generation:
 
-`planned seconds = max(5, ceil(spoken word count / 2.4) + 1)`
+`planned seconds = 6 for a normal line; 8 when the dialogue is too long to finish naturally in 6 seconds`
 
-The one-second allowance covers breathing and a brief natural finish without
-creating dead air. Record the spoken word count and planned seconds in the scene
-ledger. Different scenes may have different durations. If the calculated
-duration is outside the range supported by the current VideoExpress control,
-rebalance the paragraph across the six fragments without changing its total
-wording or order.
+Use 6 seconds by default. Choose 8 seconds only when the fragment has more than
+10 spoken words, contains a deliberately slower delivery, or a 6-second test
+cuts off or rushes the dialogue. Never select 10 seconds. Balance the six
+fragments so each clip uses the shortest of these two durations that can contain
+its complete dialogue. Record the word count and planned seconds in the scene
+ledger.
 
 Freeze a scene ledger before generating anything:
 
@@ -125,9 +124,11 @@ camera with their full mouth clearly visible. This is direct, visible, on-camera
 dialogue spoken by Actor 1. Actor 1 looks into the lens and says exactly:
 “[EXACT FRAGMENT]” The spoken audio comes from Actor 1 in the shot. Their lips,
 jaw, cheeks, and facial muscles visibly articulate every word in exact
-synchronization with the speech. Natural blinking, restrained head movement,
-stable camera, clean cinematic lighting. After the entire sentence is finished,
-[SMALL TOPIC-RELEVANT EXIT MATCH ACTION].
+synchronization with the speech. Actor 1 begins speaking within the first half
+second and uses a natural conversational pace that places the final word near
+the end of the selected 6- or 8-second clip. Natural blinking, restrained head
+movement, stable camera, clean cinematic lighting. After the entire sentence is
+finished, [SMALL TOPIC-RELEVANT EXIT MATCH ACTION].
 ```
 
 Prompt rules:
@@ -169,9 +170,9 @@ For every scene, use this exact route:
 5. Enable `Advanced Mode`.
 6. Disable `Automatically enhance my video prompt` and verify it remains
    unchecked immediately before every submission.
-7. Enable `Manual Video Length, sec` and set it to that scene's calculated
-   `planned seconds`. Recalculate and set it separately before every submission.
-   Never reuse one duration for all six scenes.
+7. Enable `Manual Video Length, sec`. Set a normal scene to 6 seconds. Set it to
+   8 seconds only when its longer dialogue cannot finish naturally in 6 seconds.
+   Verify the value separately before every submission. Never select 10 seconds.
 8. Keep public-gallery sharing disabled.
 9. Paste the complete Advanced prompt, including the exact quoted fragment,
    into `Video Prompt`.
@@ -190,11 +191,13 @@ fails, revise only mouth visibility, framing, or the explicit on-camera-dialogue
 wording and retry it. Never submit `SC-02` through `SC-06` before `SC-01` passes.
 
 Also verify that the complete quoted fragment finishes before the clip ends. If
-the calculated duration cuts off a word or rushes the ending, increase only
-that scene by one second and regenerate it. Do not change every other scene's
-duration. If the dialogue finishes and more than one second of inactive silence
-remains, keep the usable clip and trim its timeline endpoint to approximately
-0.4-0.7 seconds after the final spoken word.
+a 6-second result cuts off a word or rushes the ending, regenerate only that
+scene at 8 seconds. If an 8-second result still truncates the line, rebalance the
+unaccepted dialogue across adjacent fragments and regenerate the affected
+scenes. Never solve timing by cutting, trimming, splitting, or shortening a
+generated clip. If speech ends unusually early and leaves an awkward pause,
+regenerate that scene at the same duration with immediate speech and continuous
+natural delivery.
 
 If the Media Library preview remains loading, do not stop production solely
 because that preview surface failed. Add the calibration candidate to the empty
@@ -224,8 +227,7 @@ A scene passes the essential gate when:
 - the face and mouth remain clearly visible
 - the person visibly speaks the complete exact fragment
 - the final spoken word finishes before the clip ends
-- no more than approximately one second of inactive silence follows the final
-  spoken word, or the excess can be removed safely on the timeline
+- the speaker begins promptly and no awkward inactive pause follows the dialogue
 - mouth movement stays synchronized with the audible words
 - no unwanted writing appears in the image
 - framing and aspect ratio are correct
@@ -257,11 +259,11 @@ Use this recovery ladder without asking the user:
    the same words and a simpler speaker action.
 3. If it still fails, regenerate with a locked medium close-up, no prop action,
    and only the direct on-camera dialogue instructions.
-4. If speech is truncated, keep the exact words and add one second to that
-   scene's manual duration before regenerating.
-5. If dialogue is complete but the generated clip contains excessive dead air,
-   do not regenerate. Trim the timeline endpoint to 0.4-0.7 seconds after the
-   last word and verify the cut.
+4. If speech is truncated in a 6-second clip, keep the exact words and regenerate
+   only that scene at 8 seconds.
+5. If dialogue is complete but the clip contains excessive dead air, regenerate
+   it at the same 6- or 8-second duration with instructions to begin speaking
+   immediately and maintain continuous natural delivery. Never cut the clip.
 6. If Media Library playback is stuck, review the candidate through temporary
    timeline placement instead of pausing the whole workflow.
 7. Continue generating and reviewing the other scenes while a replacement is
@@ -286,11 +288,9 @@ After all six scenes pass review:
 7. Remove any duplicate or rejected timeline block and recheck the count.
 8. Play the complete timeline with sound and confirm each speaker starts exactly
    where the previous speaker stopped.
-9. For each clip, place the playhead at the final spoken word. If more than one
-   second of inactive silence remains, shorten the clip by dragging its right
-   timeline edge or splitting at approximately 0.4-0.7 seconds after the word
-   and removing the silent tail. Preserve the complete final word and natural
-   breath. Replay the boundary after every trim.
+9. Do not trim, split, crop, or shorten any accepted video. Every accepted clip
+   must already have clean timing from generation: 6 seconds normally or 8
+   seconds for longer dialogue. Regenerate any clip with an awkward silent tail.
 10. Review every cut. Keep a natural match action when it works. If object
    position, direction, scale, or timing does not match, retain the usable clips
    and use the ordinary direct cut already created by timeline adjacency. Only

@@ -35,13 +35,12 @@ it face-down—Codex keeps the usable speaking clip, uses a clean cut to the nex
 speaker, and completes the six-scene project. It must not stop production or
 leave the timeline empty for a transition-only mismatch.
 
-## Expected variable duration
+## Expected duration selection
 
-Codex does not force every clip to six seconds. It calculates and sets a separate
-manual duration for each fragment:
+Codex uses a 6-second manual duration for normal dialogue. If a line is too long
+to finish naturally in 6 seconds, Codex uses 8 seconds for that scene.
 
-`max(5, ceil(spoken word count / 2.4) + 1)`
-
-If a line is cut off, Codex adds one second only to that scene. If a ten-second
-clip finishes speaking early, Codex keeps the good dialogue and trims the silent
-tail on the timeline, leaving only 0.4-0.7 seconds after the final word.
+Codex never selects 10 seconds and never cuts, trims, splits, or shortens an
+accepted clip. If a generated clip has a long pause after the dialogue, Codex
+regenerates that scene at the same 6- or 8-second duration with immediate,
+continuous natural delivery.
