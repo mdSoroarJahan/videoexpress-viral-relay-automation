@@ -36,7 +36,8 @@ Codex should begin immediately when both values are present.
 - Five lightweight transition ideas with automatic clean-cut fallback
 - Text to Video -> Advanced with Advanced Mode enabled
 - Automatic prompt enhancement disabled for every generation
-- Manual clip length set to approximately six seconds
+- Dialogue-aware variable clip duration; automatic duration first, calculated
+  manual fallback only when speech is truncated
 - Direct path only: New -> Create with AI -> Text to Video -> Advanced
 - Visual action and exact quoted dialogue in each Video Prompt
 - Mandatory one-scene lip-sync calibration before batch generation
